@@ -1,0 +1,52 @@
+@font-face {
+  font-family: sk;
+  src: url("./assets/Assistant-Bold.woff2");
+}
+
+::placeholder {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.black-overlay{
+  background-color: rgba(0, 0, 0,0.7);
+  
+}
+
+.slick-dots li button:before {
+  font-size: 20px !important; /* Default is 6px, so increase it */
+  color: #000; /* active/inactive color */
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #474041; /* active dot color */
+  opacity: 1;
+}

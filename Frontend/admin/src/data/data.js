@@ -1,7 +1,7 @@
 export const Topwear = [
   {
     title: "T-Shirts",
-    url: "http://localhost:5173/category/0",
+    url: "",
   },
   {
     title: "Casual Shirts",

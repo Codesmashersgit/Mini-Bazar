@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   });
 });
 
-// Cart routes
+// Cart routes (now with authentication)
 app.use("/api/cart", cartRoutes);
 
 // Error handling middleware

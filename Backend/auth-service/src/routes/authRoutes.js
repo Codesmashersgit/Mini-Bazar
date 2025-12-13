@@ -1,5 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
+import jwt from "jsonwebtoken";
 import {
   register,
   login,
@@ -45,6 +46,54 @@ router.post("/login", loginValidation, login);
 router.post("/refresh-token", refreshToken);
 router.post("/forgot-password", forgotPasswordValidation, forgotPassword);
 router.post("/reset-password", resetPasswordValidation, resetPassword);
+
+// Token verification endpoint for other microservices
+router.post("/verify-token", async (req, res) => {
+  try {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(400).json({
+        success: false,
+        message: "Token is required"
+      });
+    }
+
+    // Verify JWT
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET || "your-secret-key"
+    );
+
+    res.json({
+      success: true,
+      data: {
+        userId: decoded.userId,
+        email: decoded.email,
+        role: decoded.role
+      }
+    });
+  } catch (error) {
+    if (error.name === "JsonWebTokenError") {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid token"
+      });
+    }
+
+    if (error.name === "TokenExpiredError") {
+      return res.status(401).json({
+        success: false,
+        message: "Token has expired"
+      });
+    }
+
+    return res.status(500).json({
+      success: false,
+      message: "Token verification failed"
+    });
+  }
+});
 
 // Protected routes
 router.post("/logout", authenticate, logout);

@@ -6,26 +6,30 @@ import {
   removeFromCart,
   clearCart,
   getCartSummary
-} from "../controllers/cartController.js"
+} from "../controllers/cartController.js";
+import { authenticate } from "../middlewares/authenticate.js";
 
 const router = express.Router();
 
-// Get user's cart
-router.get("/:userId", getCart);
+// All cart routes now require authentication
+router.use(authenticate);
+
+// Get user's cart (now uses authenticated user ID)
+router.get("/", getCart);
 
 // Get cart summary (total items, total price)
-router.get("/:userId/summary", getCartSummary);
+router.get("/summary", getCartSummary);
 
 // Add item to cart
-router.post("/:userId/items", addToCart);
+router.post("/items", addToCart);
 
 // Update cart item quantity
-router.put("/:userId/items/:productId", updateCartItem);
+router.put("/items/:productId", updateCartItem);
 
 // Remove item from cart
-router.delete("/:userId/items/:productId", removeFromCart);
+router.delete("/items/:productId", removeFromCart);
 
 // Clear entire cart
-router.delete("/:userId", clearCart);
+router.delete("/", clearCart);
 
 export default router;

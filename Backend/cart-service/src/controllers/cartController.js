@@ -4,19 +4,19 @@ import axios from "axios";
 const carts = new Map();
 
 // Product service URL (configure in .env)
-const PRODUCT_SERVICE_URL = process.env.PRODUCT_SERVICE_URL || "http://localhost:4007";
+const PRODUCT_SERVICE_URL = process.env.PRODUCT_SERVICE_URL || "http://localhost:3002";
 
-// Helper function to fetch product details
+// Helper to fetch product details
 const getProductDetails = async (productId) => {
   try {
     const response = await axios.get(`${PRODUCT_SERVICE_URL}/api/products/${productId}`);
-    return response.data;
+    return response.data.data || response.data;
   } catch (error) {
     throw new Error(`Product not found: ${productId}`);
   }
 };
 
-// Helper function to calculate cart totals
+// Helper to calculate cart totals
 const calculateCartTotals = (cartItems) => {
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -29,17 +29,10 @@ const calculateCartTotals = (cartItems) => {
   };
 };
 
-// Get user's cart
+// Get user's cart (now uses authenticated user)
 export const getCart = async (req, res, next) => {
   try {
-    const { userId } = req.params;
-    
-    if (!userId) {
-      return res.status(400).json({
-        success: false,
-        message: "User ID is required"
-      });
-    }
+    const userId = req.user.userId; // Get from authenticated user
 
     const userCart = carts.get(userId) || { items: [] };
     const totals = calculateCartTotals(userCart.items);
@@ -61,7 +54,7 @@ export const getCart = async (req, res, next) => {
 // Get cart summary
 export const getCartSummary = async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user.userId;
     
     const userCart = carts.get(userId) || { items: [] };
     const totals = calculateCartTotals(userCart.items);
@@ -81,7 +74,7 @@ export const getCartSummary = async (req, res, next) => {
 // Add item to cart
 export const addToCart = async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user.userId;
     const { productId, quantity = 1 } = req.body;
 
     if (!productId) {
@@ -162,7 +155,8 @@ export const addToCart = async (req, res, next) => {
 // Update cart item quantity
 export const updateCartItem = async (req, res, next) => {
   try {
-    const { userId, productId } = req.params;
+    const userId = req.user.userId;
+    const { productId } = req.params;
     const { quantity } = req.body;
 
     if (!quantity || quantity < 1) {
@@ -227,7 +221,8 @@ export const updateCartItem = async (req, res, next) => {
 // Remove item from cart
 export const removeFromCart = async (req, res, next) => {
   try {
-    const { userId, productId } = req.params;
+    const userId = req.user.userId;
+    const { productId } = req.params;
 
     const userCart = carts.get(userId);
 
@@ -270,7 +265,7 @@ export const removeFromCart = async (req, res, next) => {
 // Clear entire cart
 export const clearCart = async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user.userId;
 
     carts.delete(userId);
 

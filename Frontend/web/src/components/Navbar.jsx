@@ -13,6 +13,8 @@ import Women from "../Submenu/Women";
 import Kids from "../Submenu/Kids";
 import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
+import { Link } from "react-router-dom";
+
 
 function Nav({ dark, toggle, showprofile, showcontent }) {
   const [open, setOpen] = useState(false);
@@ -55,11 +57,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           dark ? "bg-black text-white" : "bg-white text-black "
         }`}
       >
-        <img
+       <Link to="/"> <img
           src="https://cdn.iconscout.com/icon/free/png-256/free-myntra-icon-svg-download-png-2249158.png?f=webp"
           alt="Brand Logo"
           className="md:h-[70px] h-[30px] w-auto md:px-7"
         />
+        </Link>
         <div className="lg:flex gap-11 hidden">
           <div className="flex gap-11">
             <li className="list-none group relative">
@@ -230,9 +233,10 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                   To access account and manage orders
                 </p>
                 
-                  <button className="border-[0.5px] border-slate-400 mt-4 p-3 text-[#ff3f6c] uppercase font-[sk] hover:border hover:border-red-400">
+                 <Link to="/login"><button className="border-[0.5px] border-slate-400 mt-4 p-3 text-[#ff3f6c] uppercase font-[sk] hover:border hover:border-red-400">
                     Login/Signup
                   </button>
+                  </Link> 
                 
                 <div className="border-b-[1px] border-gray-300 w-full opacity-35 mt-8">
                   {" "}
@@ -244,12 +248,14 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                   >
                     Orders
                   </a>
+                  <Link to="/wishlist">
                   <a
                     href=""
                     className="block hover:text-[#ff3f6c] cursor-pointer mb-2"
                   >
                     Wishlist
                   </a>
+                  </Link>
                   <a
                     href=""
                     className="block hover:text-[#ff3f6c] cursor-pointer mb-2"
@@ -276,18 +282,21 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             </div>
           </div>
 
-          <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
+         <Link to="wishlist"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHeartLight className="md:text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
               Wishlist
             </p>
+             
           
               <span className="absolute -top-1 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-3 flex items-center justify-center">
                
               </span>
            
           </div>
+          </Link>
 
+<Link to="/cart">
           <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHandbagThin className="text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
@@ -299,6 +308,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               </span>
             
           </div>
+          </Link>
 
           <div className="flex flex-col items-center cursor-pointer group relative">
             {dark ? (
@@ -327,9 +337,10 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             >
            <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/30/b7eb4f88-4a93-4b68-beac-982d29be81671698648116564-Flat_500--1-.jpg " />
               
-                <button className=" mt-4 text-red-400 p-2 font-[sk]">
+               <Link to="/login"><button className=" mt-4 text-red-400 p-2 font-[sk]">
                   Login/Signup
                 </button>
+                </Link>
              
               <button className=" text-red-400 font-[sk] lg:flex hidden ">Admin</button>
               <div className="flex flex-col gap-5 pl-4 pt-4">
@@ -579,6 +590,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           dark ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
+        <Link to="/wishlist">
         <div className="flex flex-col items-center cursor-pointer w-[50%]">
           <PiHeartLight />
           <p className="text-[12px] font-[sk]">Wishlist</p>
@@ -588,7 +600,8 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             </span>
       
         </div>
-      <div className="flex flex-col items-center cursor-pointer w-[50%]">
+        </Link>
+      <Link to="/cart"><div className="flex flex-col items-center cursor-pointer w-[50%]">
           <PiHandbagThin />
           <p className="text-[12px] font-[sk]">Cart</p>
          
@@ -596,9 +609,11 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
              
             </span>
             
+            
           
           
         </div>
+        </Link>
         
       </div>
     </>

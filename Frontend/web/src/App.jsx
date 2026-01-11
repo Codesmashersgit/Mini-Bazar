@@ -8,6 +8,8 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
+import ProductPage from "./pages/ProductPage";
+
 
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
@@ -34,6 +36,11 @@ function AppContent() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+         <Route
+    path="/product/:type"
+    element={<ProductPage />}
+  />
         <Route
           path="/login"
           element={<LoginPage dark={dark} toggle={toggle} showcontent={false} />}

@@ -1,28 +1,36 @@
 
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./App.css";
+
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import Footer from "./components/Footer";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
+
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 function AppContent() {
   const [dark, setDark] = useState(false);
   const toggle = () => setDark(!dark);
-const location = useLocation();
 
+  const location = useLocation();
+
+  const hideNavbarPaths = ["/login"];
   const hideFooterPaths = ["/login", "/cart", "/wishlist"];
+
+  const showNavbar = !hideNavbarPaths.includes(location.pathname);
   const showFooter = !hideFooterPaths.includes(location.pathname);
+
   return (
     <div
       className={`${
         dark ? "bg-black text-white" : "bg-white text-black"
-      } transition-all duration-1000 ease-in-out min-h-screen`}
+      } transition-colors duration-500 ease-in-out min-h-screen`}
     >
-      <Navbar showcontent={true} dark={dark} toggle={toggle} showprofile={true} />
+      
+      {showNavbar && <Navbar dark={dark} toggle={toggle} showcontent={true} showprofile={true}/>}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -30,18 +38,17 @@ const location = useLocation();
           path="/login"
           element={<LoginPage dark={dark} toggle={toggle} showcontent={false} />}
         />
-        
         <Route
           path="/cart"
           element={<CartPage dark={dark} toggle={toggle} showcontent={false} />}
         />
         <Route
           path="/wishlist"
-          element={<WishlistPage dark={dark} toggle={toggle} showcontent={false} />}
+          element={<WishlistPage dark={dark} toggle={toggle} showcontent={false}/>}
         />
       </Routes>
 
-      {showFooter && <Footer />}
+      {showFooter && <Footer dark={dark} />}
     </div>
   );
 }

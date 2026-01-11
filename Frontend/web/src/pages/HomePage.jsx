@@ -22,7 +22,7 @@ function Home() {
       <div className={`pt-[123px] md:pt-0`}>
         <div className="flex">
         <a href="" target='_blank'>
-        <span className="inline-flex justify-center items-center pt-24">
+        <span className="inline-flex justify-center items-center pt-20">
   <img
     src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/SEPTEMBER/27/OHAiIBod_eeab3d6a600c4ab6b06b1cfd2a276030.jpg"
     className=" cursor-pointer lg:h-[400px] lg:flex hidden"

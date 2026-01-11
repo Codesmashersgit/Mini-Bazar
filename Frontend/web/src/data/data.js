@@ -1,3 +1,169 @@
+// src/data/data.js
+
+export const products = [
+  // ===================== MEN PRODUCTS =====================
+  {
+    id: 1,
+    title: "Men Black T-Shirt",
+    category: "men",
+    subCategory: "tshirts",
+    price: 499,
+    image: "/images/men/tshirt1.jpg",
+    description: "Comfortable black t-shirt for daily wear."
+  },
+  {
+    id: 2,
+    title: "Men White Casual Shirt",
+    category: "men",
+    subCategory: "casual-shirts",
+    price: 799,
+    image: "/images/men/casualshirt1.jpg",
+    description: "Perfect casual shirt for outings."
+  },
+  {
+    id: 3,
+    title: "Men Blue Jeans",
+    category: "men",
+    subCategory: "jeans",
+    price: 999,
+    image: "/images/men/jeans1.jpg",
+    description: "Slim fit blue jeans for everyday style."
+  },
+  {
+    id: 4,
+    title: "Men Black Formal Shoes",
+    category: "men",
+    subCategory: "footwear",
+    price: 1499,
+    image: "/images/men/shoes1.jpg",
+    description: "Elegant black shoes for office and formal occasions."
+  },
+  {
+    id: 5,
+    title: "Men Hoodie Sweatshirt",
+    category: "men",
+    subCategory: "sweatshirts",
+    price: 1299,
+    image: "/images/men/hoodie1.jpg",
+    description: "Comfortable hoodie for casual winter wear."
+  },
+
+  // ===================== WOMEN PRODUCTS =====================
+  {
+    id: 6,
+    title: "Women Red Dress",
+    category: "women",
+    subCategory: "dresses",
+    price: 1299,
+    image: "/images/women/dress1.jpg",
+    description: "Stylish red dress perfect for parties."
+  },
+  {
+    id: 7,
+    title: "Women Blue Kurti",
+    category: "women",
+    subCategory: "kurtis",
+    price: 899,
+    image: "/images/women/kurti1.jpg",
+    description: "Elegant blue kurti with traditional prints."
+  },
+  {
+    id: 8,
+    title: "Women Black Flats",
+    category: "women",
+    subCategory: "footwear",
+    price: 699,
+    image: "/images/women/flats1.jpg",
+    description: "Comfortable black flats for daily wear."
+  },
+  {
+    id: 9,
+    title: "Women Handbag",
+    category: "women",
+    subCategory: "bags",
+    price: 1499,
+    image: "/images/women/bag1.jpg",
+    description: "Trendy handbag to match all outfits."
+  },
+  {
+    id: 10,
+    title: "Women Summer Dress",
+    category: "women",
+    subCategory: "dresses",
+    price: 1199,
+    image: "/images/women/dress2.jpg",
+    description: "Lightweight and breezy summer dress."
+  },
+
+  // ===================== KIDS PRODUCTS =====================
+  {
+    id: 11,
+    title: "Boys T-Shirt",
+    category: "kids",
+    subCategory: "boys-clothing",
+    price: 399,
+    image: "/images/kids/boytshirt1.jpg",
+    description: "Soft cotton t-shirt for boys."
+  },
+  {
+    id: 12,
+    title: "Girls Dress",
+    category: "kids",
+    subCategory: "girls-clothing",
+    price: 699,
+    image: "/images/kids/girldress1.jpg",
+    description: "Cute dress for girls aged 5-10."
+  },
+  {
+    id: 13,
+    title: "Boys Shorts",
+    category: "kids",
+    subCategory: "boys-clothing",
+    price: 349,
+    image: "/images/kids/boyshorts1.jpg",
+    description: "Comfortable shorts for boys in summer."
+  },
+  {
+    id: 14,
+    title: "Girls Flats",
+    category: "kids",
+    subCategory: "footwear",
+    price: 499,
+    image: "/images/kids/girlsflats1.jpg",
+    description: "Cute flats for girls aged 5-10."
+  },
+  {
+    id: 15,
+    title: "Kids Hoodie",
+    category: "kids",
+    subCategory: "unisex",
+    price: 799,
+    image: "/images/kids/hoodie1.jpg",
+    description: "Warm hoodie for kids for winter."
+  },
+
+  // ===================== HOME PRODUCTS (OPTIONAL) =====================
+  {
+    id: 16,
+    title: "Bed Sheet Set",
+    category: "home",
+    subCategory: "bed-linen",
+    price: 1299,
+    image: "/images/home/bedset1.jpg",
+    description: "Soft and comfortable bed sheet set."
+  },
+  {
+    id: 17,
+    title: "Floor Lamp",
+    category: "home",
+    subCategory: "lighting",
+    price: 1599,
+    image: "/images/home/floorlamp1.jpg",
+    description: "Stylish floor lamp for your living room."
+  }
+];
+
+
 export const Topwear = [
   {
     title: "T-Shirts",
@@ -1247,3 +1413,5 @@ export const BTopBrands = [
     url: "#",
   },
 ];
+
+

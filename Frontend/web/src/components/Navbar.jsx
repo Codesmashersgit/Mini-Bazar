@@ -54,7 +54,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
       ></div>
       <nav
         className={`w-full transition-all duration-1000 ease-in-out z-20 fixed top-0 shadow-lg md:h-[80px] h-[70px] md:p-4 p-5 flex md:justify-around items-center justify-between ${
-          dark ? "bg-black text-white" : "bg-white text-black "
+          dark ? "bg-black text-white shadow-slate-400" : "bg-white text-black "
         }`}
       >
        <Link to="/"> <img
@@ -221,7 +221,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               </a>
             )}
             <div
-              className={`absolute block p-6 -left-40 top-[58.5px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-1000 ease-in-out `}
+              className={`absolute block p-6 -left-40 top-[60px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-1000 ease-in-out `}
             >
               <div
                 className={` w-[300px] hidden group-hover:block p-6  ${
@@ -282,7 +282,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             </div>
           </div>
 
-         <Link to="wishlist"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
+         <Link to="/wishlist"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHeartLight className="md:text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
               Wishlist
@@ -576,13 +576,18 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
         <CiSearch className="absolute top-10 left-6 text-black" />
 
         <input
-          type="search"
-          placeholder="Search for products,Brands & more...."
-          spellCheck="false"
-          className={`outline-none shadow-lg py-3 pl-12 w-full p-2 mt-[13.5px] transition-all duration-1000 ease-in-out rounded-full 
-            
-          }`}
-        />
+  type="search"
+  placeholder="Search for Products, Brands and more..."
+  spellCheck="false"
+  className={`outline-none border shadow-lg rounded-full w-[500px] pl-12 py-2
+    ${dark 
+      ? "bg-black text-gray-600 placeholder-gray-400" 
+      : "bg-gray-600 text-black placeholder-gray-400" 
+    }
+  `}
+/>
+
+
       </div>
 
       <div

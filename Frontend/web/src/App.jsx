@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import WishlistPage from "./pages/WishlistPage";
 import ProductPage from "./pages/ProductPage";
-
+import AdminPage from "./pages/AdminPage"
 
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
@@ -53,7 +53,9 @@ function AppContent() {
           path="/wishlist"
           element={<WishlistPage dark={dark} toggle={toggle} showcontent={false}/>}
         />
+         <Route path="/admin" element={<AdminPage dark={dark} toggle={toggle} showcontent={false} />} />
       </Routes>
+      
 
       {showFooter && <Footer dark={dark} />}
     </div>

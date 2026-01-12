@@ -1,4 +1,11 @@
-export const products = [
-  { id: 1, name: "T-Shirt", price: 499 },
-  { id: 2, name: "Jeans", price: 1299 },
-];
+const mongoose = require('mongoose');
+
+const productSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  description: String,
+  category: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Product', productSchema);

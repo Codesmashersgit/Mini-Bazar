@@ -1,5 +1,12 @@
-import { products } from "../models/productModel.js";
+const Product = require('../models/productModel');
 
-export const getClothes = () => {
-  return products.filter(p => p.name.toLowerCase().includes("shirt") || p.name.toLowerCase().includes("jeans"));
+const getAllProducts = async () => {
+    return await Product.find({});
 };
+
+const createProduct = async (data) => {
+    const product = new Product(data);
+    return await product.save();
+};
+
+module.exports = { getAllProducts, createProduct };

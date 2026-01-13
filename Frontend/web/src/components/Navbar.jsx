@@ -68,14 +68,14 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             <li className="list-none group relative">
              
 
-                <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#ff3f6c] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
+                <a className="text-[15px] py-9 cursor-pointer hover:border-b-[5px] border-[#ff3f6c] px-2  transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                   Men
                 </a>
              
 
               {showcontent && (
                 <div
-                  className={`absolute p-6 -left-10 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
+                  className={`absolute p-6 -left-10 top-[30px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
                   <div
                     className={`h-[500px] w-[1000px] hidden px-10 py-4 group-hover:block flex-wrap ${
@@ -88,12 +88,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               )}
             </li>
             <li className="list-none group relative">
-              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-pink-400 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
+              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[5px] border-pink-400 px-2 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Women
               </a>
               {showcontent && (
                 <div
-                  className={`absolute p-6 -left-28 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
+                  className={`absolute p-6 -left-28 top-[30px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
                 >
                   <div
                     className={`h-[500px] w-[1000px] hidden group-hover:block p-6 ${
@@ -106,12 +106,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               )}
             </li>
             <li className="list-none group relative">
-              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#e67e22] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
+              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[5px] border-[#e67e22] px-2 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Kids
               </a>
               {showcontent && (
                 <div
-                  className={`absolute p-6 -left-52 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
+                  className={`absolute p-6 -left-52 top-[30px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
                 >
                   <div
                     className={`h-full w-[1000px] hidden group-hover:block p-6  ${
@@ -124,12 +124,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               )}
             </li>
             <li className="list-none group relative">
-              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#f1c40f] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
+              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[5px] border-[#f1c40f] px-2 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Home & Living
               </a>
               {showcontent && (
                 <div
-                  className={`absolute p-6 -left-72 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
+                  className={`absolute p-6 -left-72 top-[30px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
                   <div
                     className={`h-full w-[1000px] hidden  group-hover:block p-6  ${
@@ -142,12 +142,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               )}
             </li>
             <li className="list-none group relative">
-              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] hover:border-[#9b59b6] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
+              <a className="text-[15px] py-9 cursor-pointer hover:border-b-[5px] hover:border-[#9b59b6] px-2 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Beauty
               </a>
               {showcontent && (
                 <div
-                  className={`absolute block p-6 -left-[430px] top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
+                  className={`absolute block p-6 -left-[430px] top-[30px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
                   <div
                     className={`h-[500px] w-[1000px] hidden group-hover:block p-6  ${
@@ -162,7 +162,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
 
             <li className="list-none group relative">
               <a
-                className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] hover:border-[#3498db] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk] group-hover:opacity-100"
+                className="text-[15px] py-9 cursor-pointer hover:border-b-[5px] hover:border-[#3498db] px-2 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk] group-hover:opacity-100"
                 href="#"
               >
                 Studio
@@ -170,7 +170,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               </a>
               {showcontent && (
                 <div
-                  className={`absolute p-6 -left-60 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out`}
+                  className={`absolute p-6 -left-60 top-[30px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out`}
                 >
                   <div
                     className={` w-[500px] hidden group-hover:block p-1 ${

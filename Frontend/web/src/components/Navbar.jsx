@@ -572,17 +572,15 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
         </div>
       </nav>
 
-      <div className="md:hidden mt-[51px] fixed w-full p-2 z-50">
-        <CiSearch className="absolute top-10 left-6 text-black" />
-
+      <div className="md:hidden mt-[65px] fixed w-full py-2 z-50">
         <input
   type="search"
   placeholder="Search for Products, Brands and more..."
   spellCheck="false"
-  className={`outline-none border shadow-lg rounded-full w-[500px] pl-12 py-2
+  className={`outline-none border shadow-lg rounded-full w-[360px] px-4 py-2
     ${dark 
       ? "bg-black text-gray-600 placeholder-gray-400" 
-      : "bg-gray-600 text-black placeholder-gray-400" 
+      : "bg-white text-black placeholder-gray-400" 
     }
   `}
 />
@@ -591,12 +589,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
       </div>
 
       <div
-        className={`md:hidden gap-7 text-center z-20 fixed bottom-0 flex w-full py-2 transition-all duration-1000 ease-in-out ${
+        className={`md:hidden gap-7 text-center z-20 fixed bottom-0 flex justify-around w-full py-2 transition-all duration-1000 ease-in-out ${
           dark ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
         <Link to="/wishlist">
-        <div className="flex flex-col items-center cursor-pointer w-[50%]">
+        <div className="flex flex-col items-center cursor-pointer">
           <PiHeartLight />
           <p className="text-[12px] font-[sk]">Wishlist</p>
          
@@ -606,7 +604,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
       
         </div>
         </Link>
-      <Link to="/cart"><div className="flex flex-col items-center cursor-pointer w-[50%]">
+      <Link to="/cart"><div className="flex flex-col items-center cursor-pointer">
           <PiHandbagThin />
           <p className="text-[12px] font-[sk]">Cart</p>
          

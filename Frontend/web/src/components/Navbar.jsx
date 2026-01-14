@@ -60,7 +60,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
        <Link to="/"> <img
           src="https://cdn.iconscout.com/icon/free/png-256/free-myntra-icon-svg-download-png-2249158.png?f=webp"
           alt="Brand Logo"
-          className="md:h-[70px] h-[30px] w-auto md:px-7"
+          className="md:h-[70px] h-[50px] w-auto md:px-7"
         />
         </Link>
         <div className="lg:flex gap-11 hidden">
@@ -312,9 +312,9 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
 
           <div className="flex flex-col items-center cursor-pointer group relative">
             {dark ? (
-              <CiDark className="text-[20.3px]" onClick={toggle} />
+              <CiDark className="md:text-[20.3px] text-[25px]" onClick={toggle} />
             ) : (
-              <CiLight className="text-[20.3px]" onClick={toggle} />
+              <CiLight className="md:text-[20.3px] text-[25px]" onClick={toggle} />
             )}
             <p
               className={`absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100`}
@@ -324,9 +324,9 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           </div>
 
           {open ? (
-            <VscClose className="lg:hidden" onClick={togglemenu} />
+            <VscClose className="lg:hidden text-[25px]" onClick={togglemenu} />
           ) : (
-            <CgMenuRightAlt className={`lg:hidden`} onClick={togglemenu} />
+            <CgMenuRightAlt className={`lg:hidden text-[25px]`} onClick={togglemenu} />
           )}
           {open && (
             <div
@@ -572,6 +572,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
         </div>
       </nav>
 
+{showcontent &&
       <div className="md:hidden mt-[65px] fixed w-full py-2 z-50">
         <input
   type="search"
@@ -587,28 +588,29 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
 
 
       </div>
-
+}
+{showcontent &&
       <div
-        className={`md:hidden gap-7 text-center z-20 fixed bottom-0 flex justify-around w-full py-2 transition-all duration-1000 ease-in-out ${
+        className={`md:hidden gap-7 text-center z-20 fixed bottom-0 flex justify-around items-center w-full pt-2 transition-all duration-1000 ease-in-out ${
           dark ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
         <Link to="/wishlist">
         <div className="flex flex-col items-center cursor-pointer">
-          <PiHeartLight />
+          <PiHeartLight className="text-[24px]"/>
           <p className="text-[12px] font-[sk]">Wishlist</p>
          
-            <span className="relative bottom-10 left-2 bg-red-500 text-white rounded-full text-[10px] w-3 h-3 flex items-center justify-center">
+            <span className="relative bottom-12 left-4 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
               
             </span>
       
         </div>
         </Link>
       <Link to="/cart"><div className="flex flex-col items-center cursor-pointer">
-          <PiHandbagThin />
+          <PiHandbagThin className="text-[24px]"/>
           <p className="text-[12px] font-[sk]">Cart</p>
          
-            <span className="relative bottom-10 left-2  bg-red-500 text-white rounded-full text-[10px] w-3 h-3 flex items-center justify-center">
+            <span className="relative bottom-12 left-4  bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
              
             </span>
             
@@ -617,9 +619,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           
         </div>
         </Link>
+
         
       </div>
+}
     </>
+        
   );
 }
 

@@ -75,21 +75,21 @@ function Login({ dark,toggle}) {
   return (
     <>
       
-<Navbar dark={dark} toggle={toggle}/>
+<Navbar dark={dark} toggle={toggle} />
       <form onSubmit={handleSubmit}>
         <div
-          className={`h-screen w-screen flex flex-col justify-center items-center pt-7 ${
+          className={`md:h-screen flex flex-col items-center justify-center md:pt-5 pt-28 px-2 md:px-0 ${
             dark ? "bg-black text-white" : "bg-white text-black"
           } transition-all duration-1000 ease-in-out`}
         >
           <img
             src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/30/b7eb4f88-4a93-4b68-beac-982d29be81671698648116564-Flat_500--1-.jpg"
-            className="md:h-[160px] md:w-[400px] w-[320px] h-[144px]"
+            className="md:h-[160px] md:w-[400px] w-full h-[144px]"
             alt="Myntra"
           />
 
           <div
-            className={`md:w-[400px] w-[320px] p-10 ${
+            className={`md:w-[400px] w-full md:p-10 p-5 ${
               dark
                 ? "bg-black text-white border border-slate-200"
                 : "bg-white text-black shadow-lg"
@@ -132,7 +132,7 @@ function Login({ dark,toggle}) {
             )}
 
             {/* Terms */}
-            <p className="md:text-[12px] text-[11px] mt-8">
+            <p className="md:text-[12px] text-[11px] mt-8 text-center">
               By continuing, I agree to the{" "}
               <a className="text-[#FC427B] font-[sk]" href="">
                 Terms of Use
@@ -159,7 +159,7 @@ function Login({ dark,toggle}) {
             {/* Message */}
             {message && <p className="mt-4 text-red-500">{message}</p>}
 
-            <p className="mt-8 text-[13px]">
+            <p className="mt-8 text-[13px] text-center">
               Having trouble logging in?{" "}
               <a className="text-red-400 font-[sk]" href="">
                 Get help

@@ -11,6 +11,8 @@ app.use("/products", productRoutes);
 
 const serviceName = process.env.SERVICE_NAME || "product-service";
 
-app.listen(process.env.PORT, () => {
-  console.log(`${serviceName} running on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`${serviceName} running on port ${PORT}`);
 });

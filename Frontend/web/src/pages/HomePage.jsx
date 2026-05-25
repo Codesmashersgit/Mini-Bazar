@@ -2,25 +2,62 @@ import React from "react";
 import '../app.css';
 import ProductCard from "../components/ProductCard";
 import { products } from "../data/data";
+import bannerImg from "../assets/ChatGPT Image May 25, 2026, 11_45_09 PM.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className={`pt-[123px] md:pt-0`}>
 
       {/* Banner Section */}
-      <div className="flex">
-        <a href="" target='_blank'>
-          <span className="inline-flex justify-center items-center pt-20">
-            <img
-              src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/SEPTEMBER/27/OHAiIBod_eeab3d6a600c4ab6b06b1cfd2a276030.jpg"
-              className="cursor-pointer lg:h-[400px] lg:flex hidden"
-            />
-            <img
-              src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/SEPTEMBER/27/IVXASZWE_b75cfd50e6934fd3b1c59b59fd35bf0b.jpg"
-              className="cursor-pointer lg:h-[400px] lg:flex hidden"
-            />
-          </span>
-        </a>
+      <div className="w-full pt-20">
+        
+          <img
+            src={bannerImg}
+            alt="Home Banner"
+            className="w-full object-cover hidden lg:block h-[750px]"
+          />
+      
+          {/* Overlay clickable labels for banner (desktop only) */}
+          <div className="hidden lg:block absolute inset-0 pointer-events-none">
+            <div className="relative w-full h-full">
+              <Link
+                to="/men"
+                className="absolute pointer-events-auto bg-white/80 text-black px-3 py-2 rounded-md uppercase font-semibold hover:bg-white left-[8%] top-[30%] flex items-center"
+                aria-label="Men section"
+              >
+                <span className="inline-block w-3 h-3 bg-pink-500 rounded-full animate-pulse mr-2" />
+                Men
+              </Link>
+
+              <Link
+                to="/women"
+                className="absolute pointer-events-auto bg-white/80 text-black px-3 py-2 rounded-md uppercase font-semibold hover:bg-white left-[25%] top-[30%] flex items-center"
+                aria-label="Women section"
+              >
+                <span className="inline-block w-3 h-3 bg-pink-500 rounded-full animate-pulse mr-2" />
+                Women
+              </Link>
+
+              <Link
+                to="/kids"
+                className="absolute pointer-events-auto bg-white/80 text-black px-3 py-2 rounded-md uppercase font-semibold hover:bg-white left-[42%] top-[30%] flex items-center"
+                aria-label="Kids section"
+              >
+                <span className="inline-block w-3 h-3 bg-pink-500 rounded-full animate-pulse mr-2" />
+                Kids
+              </Link>
+
+              <Link
+                to="/new-collection"
+                className="absolute pointer-events-auto bg-white/80 text-black px-3 py-2 rounded-md uppercase font-semibold hover:bg-white left-[60%] top-[30%] flex items-center"
+                aria-label="New collection"
+              >
+                <span className="inline-block w-3 h-3 bg-pink-500 rounded-full animate-pulse mr-2" />
+                New Collection
+              </Link>
+            </div>
+          </div>
       </div>
 
       {/* Mobile Banners */}

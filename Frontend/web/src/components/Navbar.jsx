@@ -14,6 +14,7 @@ import Kids from "../Submenu/Kids";
 import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
 import { Link } from "react-router-dom";
+import logo from "../assets/ChatGPT Image May 25, 2026, 11_33_09 PM.png";
 
 
 function Nav({ dark, toggle, showprofile, showcontent }) {
@@ -57,10 +58,9 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           dark ? "bg-black text-white shadow-slate-400" : "bg-white text-black "
         }`}
       >
-       <Link to="/"> <img
-          src="https://cdn.iconscout.com/icon/free/png-256/free-myntra-icon-svg-download-png-2249158.png?f=webp"
+       <Link to=""> <img src={logo}
           alt="Brand Logo"
-          className="md:h-[70px] h-[50px] w-auto md:px-7"
+          className="md:h-[100px] h-[70px] w-auto md:px-7"
         />
         </Link>
         <div className="lg:flex gap-11 hidden">

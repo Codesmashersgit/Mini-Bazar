@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./Backend/api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - AUTH_SERVICE_URL=http://auth-service:4001
+      - PRODUCT_SERVICE_URL=http://product-service:4002
+      - CART_SERVICE_URL=http://cart-service:4003
+      - ORDER_SERVICE_URL=http://order-service:4004
+      - WISHLIST_SERVICE_URL=http://wishlist-service:4005
+    depends_on:
+      - auth-service
+      - product-service
+      - cart-service
+      - order-service
+      - wishlist-service
+    networks:
+      - minibazar-net
+
+  auth-service:
+    build: ./Backend/auth-service
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+    networks:
+      - minibazar-net
+
+  product-service:
+    build: ./Backend/product-service
+    ports:
+      - "4002:4002"
+    environment:
+      - PORT=4002
+    networks:
+      - minibazar-net
+
+  cart-service:
+    build: ./Backend/cart-service
+    ports:
+      - "4003:4003"
+    environment:
+      - PORT=4003
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+      - PRODUCT_SERVICE_URL=http://product-service:4002
+    networks:
+      - minibazar-net
+
+  order-service:
+    build: ./Backend/order-service
+    ports:
+      - "4004:4004"
+    environment:
+      - PORT=4004
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+    networks:
+      - minibazar-net
+
+  wishlist-service:
+    build: ./Backend/wishlist-service
+    ports:
+      - "4005:4005"
+    environment:
+      - PORT=4005
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+    networks:
+      - minibazar-net
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - api-gateway
+    networks:
+      - minibazar-net
+
+networks:
+  minibazar-net:
+    driver: bridge

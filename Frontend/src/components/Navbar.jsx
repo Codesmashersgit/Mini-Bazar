@@ -15,9 +15,14 @@ import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
 import { Link } from "react-router-dom";
 import logo from "../assets/ChatGPT Image May 25, 2026, 11_33_09 PM.png";
-
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
+import { useAuth } from "../context/AuthContext";
 
 function Nav({ dark, toggle, showprofile, showcontent }) {
+  const { cartCount } = useCart();
+  const { wishlistCount } = useWishlist();
+  const { user, isLoggedIn, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState({
     men: false,
@@ -228,15 +233,21 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                   dark ? "bg-black text-white" : "bg-white text-black"
                 }`}
               >
-                <p className="font-[sk] text-[17px]">Welcome</p>
+                <p className="font-[sk] text-[17px]">Welcome {isLoggedIn ? user?.firstName : ''}</p>
                 <p className="font-sans text-[13px]">
                   To access account and manage orders
                 </p>
                 
-                 <Link to="/login"><button className="border-[0.5px] border-slate-400 mt-4 p-3 text-[#ff3f6c] uppercase font-[sk] hover:border hover:border-red-400">
+                {isLoggedIn ? (
+                  <button onClick={logout} className="border-[0.5px] border-slate-400 mt-4 p-3 text-[#ff3f6c] uppercase font-[sk] hover:border hover:border-red-400">
+                    Logout
+                  </button>
+                ) : (
+                  <Link to="/login"><button className="border-[0.5px] border-slate-400 mt-4 p-3 text-[#ff3f6c] uppercase font-[sk] hover:border hover:border-red-400">
                     Login/Signup
                   </button>
-                  </Link> 
+                  </Link>
+                )}
                 
                 <div className="border-b-[1px] border-gray-300 w-full opacity-35 mt-8">
                   {" "}
@@ -288,10 +299,11 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               Wishlist
             </p>
              
-          
+            {wishlistCount > 0 && (
               <span className="absolute -top-1 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-3 flex items-center justify-center">
-               
+               {wishlistCount}
               </span>
+            )}
            
           </div>
           </Link>
@@ -303,9 +315,11 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               Cart
             </p>
             
+            {cartCount > 0 && (
               <span className="absolute -top-1 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-3 flex items-center justify-center">
-                
+                {cartCount}
               </span>
+            )}
             
           </div>
           </Link>
@@ -600,9 +614,11 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           <PiHeartLight className="text-[24px]"/>
           <p className="text-[12px] font-[sk]">Wishlist</p>
          
+          {wishlistCount > 0 && (
             <span className="relative bottom-12 left-4 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
-              
+              {wishlistCount}
             </span>
+          )}
       
         </div>
         </Link>
@@ -610,9 +626,11 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           <PiHandbagThin className="text-[24px]"/>
           <p className="text-[12px] font-[sk]">Cart</p>
          
-            <span className="relative bottom-12 left-4  bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
-             
+          {cartCount > 0 && (
+            <span className="relative bottom-12 left-4 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
+             {cartCount}
             </span>
+          )}
             
             
           

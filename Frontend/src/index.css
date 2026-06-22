@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,14 +6,50 @@
 :root {
   --primary: #ff3f6c;
   --primary-dark: #d63060;
-  --accent: #4f46e5;
+  --accent: #6366f1;
 }
 
-* { font-family: 'Inter', sans-serif; }
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-slate-50 text-slate-900 transition-colors duration-500;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: 'Outfit', sans-serif;
+}
 
 @layer utilities {
-  .scrollbar-hidden { scrollbar-width: none; -ms-overflow-style: none; }
-  .scrollbar-hidden::-webkit-scrollbar { display: none; }
+  .scrollbar-hidden { 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+  .scrollbar-hidden::-webkit-scrollbar { 
+    display: none; 
+  }
+  
+  .glass-effect {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+  .dark .glass-effect {
+    @apply bg-premium-darker/70 backdrop-blur-md border border-white/5 shadow-glass-dark;
+  }
+  
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-lg border border-slate-200/50 shadow-premium rounded-2xl;
+  }
+  .dark .glass-card {
+    @apply bg-premium-dark/90 backdrop-blur-lg border border-slate-700/50 shadow-glass-dark rounded-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-pink to-premium-accent;
+  }
+  
+  .bg-premium-gradient {
+    @apply bg-gradient-to-br from-brand-pink via-purple-500 to-premium-accent;
+  }
 }
 
 @keyframes shimmer {
@@ -21,18 +57,12 @@
   100% { background-position: 1000px 0; }
 }
 .shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 75%);
   background-size: 1000px 100%;
   animation: shimmer 2s infinite;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-in-up { animation: fadeInUp 0.4s ease-out; }
-
-@keyframes pulse-dot {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+/* Base transitions */
+* {
+  @apply transition-colors duration-300;
 }

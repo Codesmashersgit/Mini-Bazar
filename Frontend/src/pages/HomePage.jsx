@@ -7,131 +7,158 @@ const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { bg: 'from-pink-500 to-purple-600', title: 'New Collection 2026', subtitle: 'Step into the future of fashion', cta: 'Shop Now' },
-    { bg: 'from-blue-500 to-teal-400', title: 'Summer Sale: Up to 70% Off', subtitle: 'Beat the heat with hot styles', cta: 'Explore Deals' },
-    { bg: 'from-orange-400 to-red-500', title: 'Premium Fashion for Everyone', subtitle: 'Discover your unique style', cta: 'Discover' },
+    { 
+      title: 'FESTIVE FASHION SALE', 
+      subtitle: 'Up to 50-80% Off on Top Brands', 
+      cta: 'Explore Now',
+      image: 'https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/179e278f-77ee-44c2-bf39-9f00b0cd08e01658752429301-Handbags_Desk.jpg'
+    },
+    { 
+      title: 'WINTER COLLECTION', 
+      subtitle: 'Layer up in style this season', 
+      cta: 'Shop Winter Wear',
+      image: 'https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/b656a7f4-4688-4997-bb7c-54bceb1cb3e71658752386588-Western-Wear_Desk.jpg'
+    },
+    { 
+      title: 'BEAUTY BONANZA', 
+      subtitle: 'Premium makeup & skincare deals', 
+      cta: 'Discover Beauty',
+      image: 'https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/7/25/9be788ff-39a4-4214-99d0-fc97505aae5a1658752545685-USPA_Desk_Banner.jpg'
+    },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
   const categories = [
-    { name: 'Men', icon: '👔', link: '/product/men', color: 'bg-blue-100 text-blue-600' },
-    { name: 'Women', icon: '👗', link: '/product/women', color: 'bg-pink-100 text-pink-600' },
-    { name: 'Kids', icon: '🧸', link: '/product/kids', color: 'bg-yellow-100 text-yellow-600' },
-    { name: 'Home', icon: '🏠', link: '/product/home', color: 'bg-green-100 text-green-600' },
-    { name: 'Beauty', icon: '💄', link: '/product/beauty', color: 'bg-purple-100 text-purple-600' },
+    { name: 'Men', image: 'https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/b215da32-7561-41b4-ac54-eb061992015d1707374092289-Desktop-Men.png', link: '/product/men' },
+    { name: 'Women', image: 'https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/f0ebc77d-86fc-4638-aa23-86dd9d5045ea1707374092283-Desktop-Women.png', link: '/product/women' },
+    { name: 'Kids', image: 'https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/ea878b20-1a6f-45b0-ac22-de5dccab93d61707374092296-Desktop-Kids.png', link: '/product/kids' },
+    { name: 'Home', image: 'https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/201ed00a-b1e6-4299-8806-25ccdf5014cc1707374092301-Desktop-Home.png', link: '/product/home' },
+    { name: 'Beauty', image: 'https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/6c1b3fb4-5d9c-47fc-b853-c90a16c729501707374092309-Desktop-Beauty.png', link: '/product/beauty' },
+    { name: 'Accessories', image: 'https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/c0683492-23c3-4d43-8557-65715fbba2c21707374092316-Desktop-Accessories.png', link: '/product/accessories' },
   ];
 
   const flashSaleProducts = products.filter(p => p.discount >= 45).slice(0, 6);
   const trendingProducts = products.slice(0, 8);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-[120px] md:pt-[80px] bg-white">
+      
       {/* Hero Carousel */}
-      <div className="relative h-[60vh] md:h-[80vh] overflow-hidden">
+      <div className="relative h-[300px] md:h-[500px] lg:h-[600px] w-full overflow-hidden">
         {slides.map((slide, index) => (
           <div 
             key={index}
-            className={`absolute inset-0 bg-gradient-to-r ${slide.bg} transition-opacity duration-1000 flex items-center justify-center text-white text-center px-4 ${index === currentSlide ? 'opacity-100' : 'opacity-0 z-[-1]'}`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
           >
-            <div className={index === currentSlide ? 'fade-in-up' : ''}>
-              <h1 className="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">{slide.title}</h1>
-              <p className="text-xl md:text-2xl mb-8 font-medium opacity-90">{slide.subtitle}</p>
-              <button className="bg-white text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                {slide.cta}
-              </button>
+            <div className="w-full h-full relative">
+              <img src={slide.image} alt={slide.title} className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+            </div>
+            
+            <div className="absolute inset-0 flex flex-col items-start justify-center p-8 md:p-16 lg:p-24 max-w-[1440px] mx-auto">
+              <div className={`max-w-xl transition-all duration-700 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight text-white uppercase tracking-tight">
+                  {slide.title}
+                </h1>
+                <p className="text-lg md:text-xl mb-8 font-medium text-white/90">{slide.subtitle}</p>
+                <button className="bg-brand-pink text-white hover:bg-brand-pinkDark px-8 py-3.5 font-bold transition-colors uppercase tracking-widest text-sm">
+                  {slide.cta} →
+                </button>
+              </div>
             </div>
           </div>
         ))}
-        {/* Dots */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-10">
+        
+        {/* Navigation Dots */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-20">
           {slides.map((_, idx) => (
             <button 
               key={idx} 
               onClick={() => setCurrentSlide(idx)}
-              className={`w-3 h-3 rounded-full transition-all ${idx === currentSlide ? 'bg-white w-8' : 'bg-white/50'}`}
+              className={`h-2 rounded-full transition-all duration-300 ${idx === currentSlide ? 'bg-brand-pink w-8' : 'bg-white/50 hover:bg-white/80 w-2'}`}
+              aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
         </div>
       </div>
 
-      {/* Categories */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-bold mb-8 uppercase tracking-widest text-center">Shop by Category</h2>
-        <div className="flex overflow-x-auto md:grid md:grid-cols-5 gap-6 pb-4 scrollbar-hidden">
-          {categories.map((cat, idx) => (
-            <Link key={idx} to={cat.link} className={`flex-shrink-0 w-32 md:w-auto flex flex-col items-center justify-center p-6 rounded-2xl ${cat.color} hover:shadow-md transition-all hover:-translate-y-1`}>
-              <span className="text-4xl mb-3">{cat.icon}</span>
-              <span className="font-bold">{cat.name}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Flash Sale */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-end mb-8">
-            <div>
-              <h2 className="text-3xl font-bold flex items-center gap-2">
-                <span className="text-yellow-500">⚡</span> Flash Sale
-              </h2>
-              <p className="text-gray-500 mt-2">Ends in: <span className="font-mono bg-red-100 text-red-600 px-2 py-1 rounded font-bold">24:00:00</span></p>
-            </div>
-            <Link to="/product/men" className="text-[#ff3f6c] font-medium hover:underline">View All</Link>
-          </div>
-          
-          <div className="flex overflow-x-auto gap-6 pb-8 scrollbar-hidden snap-x">
-            {flashSaleProducts.map(p => (
-              <div key={p.id} className="min-w-[280px] snap-start">
-                <ProductCard product={p} />
-              </div>
+      {/* Category Strip */}
+      <div className="bg-white border-b border-gray-100 py-8">
+        <div className="max-w-[1440px] mx-auto px-4">
+          <div className="flex justify-start md:justify-center gap-6 md:gap-10 overflow-x-auto pb-2 scrollbar-hidden">
+            {categories.map((cat, idx) => (
+              <Link key={idx} to={cat.link} className="flex flex-col items-center group cursor-pointer flex-shrink-0">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden mb-2 border-2 border-gray-200 group-hover:border-brand-pink transition-colors duration-300">
+                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <span className="text-xs font-bold text-gray-800 uppercase tracking-wider group-hover:text-brand-pink transition-colors">{cat.name}</span>
+              </Link>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Trending Now */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">Trending Now</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {trendingProducts.map(p => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-      </div>
+      <div className="max-w-[1440px] mx-auto px-4 space-y-16 py-12">
+        
+        {/* Flash Sale Section */}
+        <section>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-gray-900 flex items-center gap-4">
+                Deal of the Day
+                <span className="bg-brand-pink text-white text-xs px-3 py-1 font-mono font-bold">24:00:00</span>
+              </h2>
+            </div>
+            <Link to="/product/men" className="text-brand-pink font-bold uppercase text-sm mt-4 md:mt-0 hover:text-brand-pinkDark transition-colors">
+              View All Deals →
+            </Link>
+          </div>
+          
+          <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hidden snap-x -mx-4 px-4 md:mx-0 md:px-0">
+            {flashSaleProducts.map(p => (
+              <div key={p.id} className="min-w-[200px] md:min-w-[260px] snap-start">
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* Value Props */}
-      <div className="border-t border-gray-200 py-16">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-4xl mb-4">🚚</div>
-            <h3 className="font-bold mb-2">Free Delivery</h3>
-            <p className="text-sm text-gray-500">On orders above ₹999</p>
+        {/* Promotional Banners */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="overflow-hidden group cursor-pointer">
+            <img src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/01edfcbf-de6b-4e69-9da8-1abf83c1622f1707374092248-Desktop-Banner_490x390-1.png" alt="Promo 1" className="w-full h-auto group-hover:scale-105 transition-transform duration-500 object-cover" />
           </div>
-          <div>
-            <div className="text-4xl mb-4">🔄</div>
-            <h3 className="font-bold mb-2">Easy Returns</h3>
-            <p className="text-sm text-gray-500">30 days return policy</p>
+          <div className="overflow-hidden group cursor-pointer">
+            <img src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/8/4f9b2b35-7164-4dd2-83de-a89c3bcbd6f31707374092257-Desktop-Banner_490x390-2.png" alt="Promo 2" className="w-full h-auto group-hover:scale-105 transition-transform duration-500 object-cover" />
           </div>
-          <div>
-            <div className="text-4xl mb-4">✅</div>
-            <h3 className="font-bold mb-2">100% Authentic</h3>
-            <p className="text-sm text-gray-500">Original products guaranteed</p>
-          </div>
-          <div>
-            <div className="text-4xl mb-4">🎧</div>
-            <h3 className="font-bold mb-2">24/7 Support</h3>
-            <p className="text-sm text-gray-500">Always here to help you</p>
-          </div>
-        </div>
-      </div>
+        </section>
 
+        {/* Trending Now */}
+        <section>
+          <div className="flex justify-between items-end mb-6">
+            <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-gray-900">
+              Trending In India
+            </h2>
+            <Link to="/product/women" className="text-brand-pink font-bold uppercase text-sm hover:text-brand-pinkDark transition-colors">
+              View All →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {trendingProducts.map((p) => (
+              <div key={p.id}>
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
     </div>
   );
 };

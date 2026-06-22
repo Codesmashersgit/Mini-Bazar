@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
@@ -16,8 +16,6 @@ import OrdersPage from './pages/OrdersPage';
 import './App.css';
 
 function AppContent() {
-  const [dark, setDark] = useState(false);
-  const toggle = () => setDark(!dark);
   const location = useLocation();
 
   const hideNavbarPaths = ['/login'];
@@ -27,19 +25,19 @@ function AppContent() {
   const showFooter = !hideFooterPaths.includes(location.pathname);
 
   return (
-    <div className={`${dark ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'} transition-colors duration-500 min-h-screen`}>
-      {showNavbar && <Navbar dark={dark} toggle={toggle} showcontent={true} showprofile={true} />}
+    <div className="bg-white text-gray-900 min-h-screen font-sans antialiased">
+      {showNavbar && <Navbar showcontent={true} />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:type" element={<ProductPage />} />
         <Route path="/product/:category/:id" element={<ProductDetailPage />} />
-        <Route path="/login" element={<LoginPage dark={dark} toggle={toggle} />} />
-        <Route path="/cart" element={<CartPage dark={dark} toggle={toggle} />} />
-        <Route path="/wishlist" element={<WishlistPage dark={dark} toggle={toggle} />} />
-        <Route path="/orders" element={<OrdersPage dark={dark} toggle={toggle} />} />
-        <Route path="/admin" element={<AdminPage dark={dark} toggle={toggle} />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      {showFooter && <Footer dark={dark} />}
+      {showFooter && <Footer />}
     </div>
   );
 }
